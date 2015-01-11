@@ -14,7 +14,12 @@ object ApplicationBuild extends Build {
       libraryDependencies ++= Dependencies.js.value
     ).settings(
       scalaVersion := Versions.scala,
-      libraryDependencies ++= Dependencies.shared.value
+      libraryDependencies ++= Dependencies.shared.value,
+
+      libraryDependencies ++= Seq(
+          "com.lihaoyi" %%% "utest" % "0.2.5-M3" % "test"
+      ),
+      testFrameworks += new TestFramework("utest.runner.Framework")
     )
 
   lazy val jvm = example.jvm
